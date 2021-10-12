@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExtensionService, ExtensionPointToolboxAction, IntranetLocation } from '@valo/extensibility';
+import { ExtensionService, ExtensionPointToolboxAction, ExtensionPointToolboxPanelCreationAction, IntranetLocation } from '@valo/extensibility';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
@@ -23,16 +23,17 @@ export default class ToolboxComponent extends React.Component<IToolboxComponentP
 
   public componentDidMount() {
     if (this.props.extensionService) {
+      console.log('got here');
       this.props.extensionService.registerExtension({
         id: "ToolboxAction",
-        location: IntranetLocation.ToolboxAction,
+        location: IntranetLocation.ToolboxPanelCreationAction,
         element: [
           {
             title: "Extension 1",
             icon: "Code",
             description: "Extension 1 description",
             onClick: () => this.setState({ isOpen: true })
-          } as ExtensionPointToolboxAction,
+          } as ExtensionPointToolboxPanelCreationAction,
           {
             title: "Extension 2",
             icon: "QRCode",

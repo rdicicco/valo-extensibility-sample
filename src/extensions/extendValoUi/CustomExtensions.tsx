@@ -40,6 +40,21 @@ export default class CustomExtensions {
   }
 
   public register(ctx: ApplicationCustomizerContext) {
+    this.extensionService.registerExtension({
+      id: "ToolboxAction1",
+      location: IntranetLocation.ToolboxAction,  
+      element: [
+        {
+          title: "Feedback and help",
+          icon: "StatusCircleQuestionMark",
+          description: "Feedback and help",
+          onClick: async () => {
+            console.log('test');
+          }
+        //} as ExtensionPointToolboxAction
+        } as ExtensionPointToolboxPanelCreationAction
+      ]    
+    });
     // this.extensionService.registerExtension({
     //   id: "NavigationLeft",
     //   location: IntranetLocation.NavigationLeft,
@@ -114,17 +129,15 @@ export default class CustomExtensions {
     //   )
     // });
 
-    // this.extensionService.registerExtension({
-    //   id: "Footer",
-    //   location: IntranetLocation.Footer,
-    //   element: (
-    //     <React.Fragment>
-    //       <Footer />
-
-    //       <ToolboxComponent extensionService={this.extensionService} />
-    //     </React.Fragment>
-    //   )
-    // });
+    this.extensionService.registerExtension({
+      id: "Footer",
+      location: IntranetLocation.Footer,
+      element: (
+        <React.Fragment>
+          <ToolboxComponent extensionService={this.extensionService} />
+        </React.Fragment>
+      )
+    });
 
     /**
      * New extension points available in version 1.6
@@ -146,6 +159,19 @@ export default class CustomExtensions {
     //   location: IntranetLocation.OverwriteBreadcrumb,
     //   element: CustomBreadcrumb
     // });
+
+    this.extensionService.registerExtension({
+      id: "QRCodeAction",
+      location: IntranetLocation.ToolboxAction,
+      element: [
+        {
+          title: "Creation Extension 2",
+          icon: "QRCode",
+          description: "Creation extension 2 description",
+          onClick: () => alert('You clicked on the creation extension 2 toolbox action.')
+        } as ExtensionPointToolboxAction
+      ]
+    });
 
     // this.extensionService.registerExtension({
     //   id: "ToolboxPanelCreationAction",
@@ -174,28 +200,28 @@ export default class CustomExtensions {
     //   ]
     // });
 
-    this.extensionService.registerExtension({
-      id: "ToolboxPanelCreationAction3",
-      location: IntranetLocation.ToolboxPanelCreationAction,
-      element: [
-        {
-          title: "Vacation request",
-          icon: "Vacation",
-          description: "Create a vacation request",
-          onClick: async () => {
-            const trigger = await this.triggerService.registerTrigger(IntranetTrigger.GenericPanel);
-            if (trigger) {
-              trigger.invokeTrigger({
-                siteUrl: ctx.pageContext.site.absoluteUrl,
-                webUrl: ctx.pageContext.web.absoluteUrl,
-                listId: "77919457-4521-49bc-9ee6-72dbe7976709", // The id of the list
-                contextActionType: ContextActionType.create
-              });
-            }
-          }
-        } as ExtensionPointToolboxPanelCreationAction
-      ]
-    });
+    // this.extensionService.registerExtension({
+    //   id: "ToolboxPanelCreationAction3",
+    //   location: IntranetLocation.ToolboxPanelCreationAction,
+    //   element: [
+    //     {
+    //       title: "Vacation request",
+    //       icon: "Vacation",
+    //       description: "Create a vacation request",
+    //       onClick: async () => {
+    //         const trigger = await this.triggerService.registerTrigger(IntranetTrigger.GenericPanel);
+    //         if (trigger) {
+    //           trigger.invokeTrigger({
+    //             siteUrl: ctx.pageContext.site.absoluteUrl,
+    //             webUrl: ctx.pageContext.web.absoluteUrl,
+    //             listId: "77919457-4521-49bc-9ee6-72dbe7976709", // The id of the list
+    //             contextActionType: ContextActionType.create
+    //           });
+    //         }
+    //       }
+    //     } as ExtensionPointToolboxPanelCreationAction
+    //   ]
+    // });
 
     // Providers
     this.fetchProviders();

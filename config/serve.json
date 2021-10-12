@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://rdicicco.sharepoint.com/sites/Contosoportal",
       "customActions": {
         "7d190fa2-c4ae-42b2-8537-431bf7bb8b41": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "extendValoUi": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://rdicicco.sharepoint.com/sites/lennar",
       "customActions": {
         "7d190fa2-c4ae-42b2-8537-431bf7bb8b41": {
           "location": "ClientSideExtension.ApplicationCustomizer",
